@@ -1,0 +1,40 @@
+body {
+  width: 328px;
+}
+
+img {
+  border: none;
+  background: url("../images/loading.svg") no-repeat center center;
+}
+
+img.qr:hover {
+  -webkit-filter: blur(6px);
+  filter: blur(6px);
+}
+
+#content {
+  display: flex;
+  flex-direction: column;
+}
+
+#content > div{
+  font-size: 16px;
+  margin: 4px;
+  display: flex;
+  align-items: center;
+}
+
+.url{
+  display: inline-block;
+  line-height: 140%;
+  word-break: break-all;
+  padding-left: 10px;
+  max-height: 150px;
+  overflow: auto;
+}
+
+.badge {
+  text-align: center;
+  line-height: 0;
+  margin-top: 6px
+}

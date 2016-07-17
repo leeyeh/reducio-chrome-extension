@@ -1,0 +1,54 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <!-- build:css styles/popup-vendor.css -->
+    <!-- bower:css -->
+    <!-- endbower -->
+    <!-- endbuild -->
+    <!-- build:css styles/main.css -->
+    <link href="styles/main.css" rel="stylesheet">
+    <!-- endbuild -->
+  </head>
+  <body id="app">
+    <div id="content">
+      <div id="original">
+        <qr :url="originalURL"></qr>
+        <span class="url">{{ originalURL }}</span>
+      </div>
+      <div id="short">
+        <qr :url="shortURL"></qr>
+        <div class="url" v-show="path && !editingMode">
+          <span>{{ shortURL }}</span>
+          <button v-on:click="copy">Copy</button>
+          <button v-on:click="edit">Edit</button>
+        </div>
+        <div class="url" v-show="editingMode">
+          <span>{{ domain }}/</span>
+          <form v-on:submit.prevent="post">
+            <input type="text" v-model="customPath" required/>
+            <input type="submit" v-show="editingMode === 1" value="Submit">
+            <button v-show="editingMode === 2" disabled>Submiting</button>
+            <button v-on:click="cancel">Cancel</button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="badge">
+      <a href="https://github.com/leeyeh/Reducio" target="_blank">
+        <svg xmlns="http://www.w3.org/2000/svg" width="150" height="20"><g shape-rendering="crispEdges"><path fill="#555" d="M0 0h75v20H0z"/><path fill="#007ec6" d="M75 0h75v20H75z"/></g><g fill="#fff" text-anchor="middle" font-family="DejaVu Sans,Verdana,Geneva,sans-serif" font-size="11"><text x="38.5" y="14">powered by</text><text x="111.5" y="14">LeanCloud</text></g></svg>
+      </a>
+    </div>
+    <!-- build:js scrip
+    ts/popup-vendor.js -->
+    <!-- bower:js -->
+    <script src="bower_components/vue/dist/vue.js"></script>
+    <script src="bower_components/qrious/qr.min.js"></script>
+    <!-- endbower -->
+    <!-- endbuild -->
+
+    <!-- build:js scripts/popup.js -->
+    <script src="scripts/popup.js"></script>
+    <!-- endbuild -->
+  </body>
+</html>
