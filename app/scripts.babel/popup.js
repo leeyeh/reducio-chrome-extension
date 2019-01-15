@@ -15,7 +15,7 @@ var QR = Vue.extend({
 });
 Vue.component('qr', QR);
 
-chrome.tabs.getSelected(tab => {
+chrome.tabs.query({ active: true }, ([tab]) => {
   const originalURL = tab.url;
 
   let vm = new Vue({
